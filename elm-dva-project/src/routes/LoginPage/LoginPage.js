@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Component } from 'react'
 import { connect } from 'dva';
 import LoginStyle from './LoginPage.css'
+
 // import LoginMsg from './LoginMsg.json'
 // console.log(this.fetch())
 // {"tel":18007727380},
@@ -65,16 +66,7 @@ class LoginPage extends Component {
 
 
 
-    loginIn() {//验证功能
-        // console.log(this.props.telNum.userTel);
-        // console.log(LoginMsg.user);
-        // fetch('http://localhost:3000/')
-        //     .then(function (response) {
-        //         return response.json();
-        //     })
-        //     .then(function (myJson) {
-        //         console.log(myJson);
-        //     });
+    loginIn() {
 
         if (this.refs.yzmT.value == this.refs.yzmP.innerHTML && this.refs.yzmT.value) {
             axios.get('http://localhost:3000', {
@@ -84,79 +76,18 @@ class LoginPage extends Component {
             })
             .then(function (response) {
                 console.log(response.data)
+                alert(response.data)
             })
             .catch(function (error) {
                 console.log(error)
             })
         }
-
-        // this.data.istrue = true;
-
-        // // console.log(item.tel)
-
-        // if (this.data.istrue) {//只执行一次
-        //     if ((this.data.reg).test(this.refs.telTex.value)) {//是否符合正则
-        //         //值相等且非空
-        //         if (this.refs.yzmP.innerHTML == this.refs.yzmT.value && this.refs.yzmT.value) {
-        //             // alert('登录成功')
-
-        //             (this.props.telNum.userTel).forEach((item, index) => {
-        //                 // console.log(item)
-        //                 if (item.tel == this.refs.telTex.value) {//数据库是否有该数据
-        //                     console.log('nopush')
-
-        //                 } else {
-
-        //                     // console.log('push');
-        //                     // (LoginMsg.user).push({"tel":18007727380},);
-        //                     // (function wJson(pram){
-        //                     //     fs.readFile('./LoginMsg.json',(err,user)=>{
-        //                     //         if(err){
-        //                     //             return console.error(err);
-        //                     //         }
-        //                     //         console.log(user);
-        //                     //     })
-        //                     // })()
-        //                     axios.get('http://localhost:3000', {
-        //                         params: {
-        //                             tel: this.refs.telTex.value
-        //                         }
-        //                     })
-        //                         .then(function (response) {
-        //                             console.log(response.data)
-        //                         })
-        //                         .catch(function (error) {
-        //                             console.log(error)
-        //                         })
-        //                 }
-        //             })
+        
 
 
-
-        //         } else {
-        //             alert('验证码错误')
-        //         }
-
-        //     } else {
-        //         alert('手机号错误')
-        //     }
-        // }
-        // this.data.istrue = false;
-
-
-
-        // console.log(item.tel)
-        // if (this.data.istrue == true) {
-        //     if (item.tel == this.refs.telTex.value) {//数据库是否有该数据
-        //         LoginMsg.user.push({ "tel": this.refs.telTex.value });
-        //     }
-        // } else {
-        //     alert('验证码或手机号错误')
-        // }
-
-
-        // this.data.istrue = false;
-
+    }
+    componentWillUnMount=()=>{
+        this.cancelable.cancel('组件卸载,取消请求');
     }
     // yzmTexS(){
     // console.log(this.data.yzmTex)
