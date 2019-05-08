@@ -4,11 +4,9 @@ export default {
     namespace: 'telNum',
   
     state: {
-        userTel: [
-            {tel:'18007727380'},
-            {tel:'13456789123'},
-        ],
-        val:'val'
+        userTel: {
+            reg: /^1(3|4|5|7|8)\d{9}$/,
+        }
     },
   
     // subscriptions: {

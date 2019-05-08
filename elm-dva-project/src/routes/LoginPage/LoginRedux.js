@@ -4,9 +4,9 @@ import React from 'react';
 import { connect } from 'dva';
 
 function LoginRedux(props){
-    console.log(props.telNum.userTel[0])
+    console.log(props.telNum.userTel)
     return (
-        <div>redux{props.telNum.userTel.tel}</div>
+        <div>redux{props.telNum.userTel.yzmTex}</div>
     )
 }
 LoginRedux.prototypes={}
